@@ -1,0 +1,16 @@
+
+.wy-side-nav-search, .wy-nav-top {
+    background: #ffffff;
+    }
+
+.wy-nav-side {
+    background: #000000;
+    }
+
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+    color: #ed1c24;
+    }
+
+ueb-blueprint {
+    margin-bottom: 10px;
+}
