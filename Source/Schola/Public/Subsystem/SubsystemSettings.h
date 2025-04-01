@@ -122,7 +122,7 @@ public:
 	 * @brief Launch the script
 	 * @return The process handle of the launched script
 	 */
-	FProcHandle LaunchScript() const;
+	FProcHandle LaunchScript(bool bOpenTerminal = true) const;
 };
 
 /**
@@ -857,6 +857,10 @@ public:
 	/** Whether to run the script on play. Can be overriden by a CLI arg. */
 	UPROPERTY(Config, EditAnywhere, Category = "General")
 	bool bRunScriptOnPlay = false;
+
+	/** Open terminal while running the script on play in order to debug.  */
+	UPROPERTY(Config, EditAnywhere, Category = "General")
+	bool bOpenTerminal = true;
 
 	/** The settings for the script */
 	UPROPERTY(Config, EditAnywhere, meta = (EditCondition = "bRunScriptOnPlay", ShowOnlyInnerProperties), Category = "Script Settings")

@@ -69,9 +69,48 @@ void FTrainingSettings::GenerateTrainingArgs(int Port, FScriptArgBuilder& ArgBui
 	;
 }
 
-FProcHandle FLaunchableScript::LaunchScript() const
+FProcHandle FLaunchableScript::LaunchScript(bool bOpenTerminal) const
 {
-	return FPlatformProcess::CreateProc(TEXT("cmd.exe"), *(FString("/K ") + this->ScriptURL  + FString(" ") + this->Args), false, false, false, nullptr, 0, nullptr, nullptr);
+	if (bOpenTerminal)
+	{
+
+		#if PLATFORM_WINDOWS
+		return FPlatformProcess::CreateProc(TEXT("cmd.exe"),
+			*(FString("/K ") + this->ScriptURL  + FString(" ") + this->Args),
+			false,
+			false,
+			false,
+			nullptr,
+			0,
+			nullptr,
+			nullptr
+			);
+		#elif   PLATFORM_LINUX || PLATFORM_MAC
+		return FPlatformProcess::CreateProc(TEXT("/bin/bash"),
+			*(FString("-i -c ") + this->ScriptURL  + FString(" ") + this->Args),
+			false,
+			false,
+			false,
+			nullptr,
+			0,
+			nullptr,
+			nullptr
+		);
+		#endif
+	}
+	else
+	{
+		return FPlatformProcess::CreateProc(*this->ScriptURL,
+			*this->Args,
+			false,
+			false,
+			false,
+			nullptr,
+			0,
+			nullptr,
+			nullptr
+			);
+	}
 }
 
 FString FScriptSettings::GetTrainingArgs(int Port) const
