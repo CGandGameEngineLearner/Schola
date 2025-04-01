@@ -71,7 +71,7 @@ void FTrainingSettings::GenerateTrainingArgs(int Port, FScriptArgBuilder& ArgBui
 
 FProcHandle FLaunchableScript::LaunchScript() const
 {
-	return FPlatformProcess::CreateProc(*this->ScriptURL, *this->Args, false, false, false, nullptr, 0, nullptr, nullptr);
+	return FPlatformProcess::CreateProc(TEXT("cmd.exe"), *(FString("/K ") + this->ScriptURL  + FString(" ") + this->Args), false, false, false, nullptr, 0, nullptr, nullptr);
 }
 
 FString FScriptSettings::GetTrainingArgs(int Port) const
