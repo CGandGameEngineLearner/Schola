@@ -10,7 +10,7 @@
  * @brief An abstract class objects that can interact with the environment, either by observing or acting
  */
 UCLASS(Abstract, EditInlineNew)
-class UAbstractInteractor : public UObject
+class SCHOLA_API UAbstractInteractor : public UObject
 {
 	GENERATED_BODY()
 public:

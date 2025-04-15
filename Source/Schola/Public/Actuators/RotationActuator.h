@@ -11,7 +11,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRotationInputSignature, const FRotator&, RotationInput);
 
 UCLASS(BlueprintType, Blueprintable)
-class URotationActuator : public UBoxActuator
+class SCHOLA_API URotationActuator : public UBoxActuator
 {
 	GENERATED_BODY()
 

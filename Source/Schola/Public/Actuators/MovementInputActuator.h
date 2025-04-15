@@ -13,7 +13,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMovementInputSignature, const FVector&, MovementInput);
 
 UCLASS(BlueprintType, Blueprintable)
-class UMovementInputActuator : public UBoxActuator
+class SCHOLA_API UMovementInputActuator : public UBoxActuator
 {
 	GENERATED_BODY()
 
